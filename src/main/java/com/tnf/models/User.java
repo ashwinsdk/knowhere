@@ -1,7 +1,6 @@
 package com.tnf.models;
 
 import jakarta.persistence.*;
-import sun.jvm.hotspot.debugger.Address;
 
 import java.util.List;
 
@@ -9,7 +8,7 @@ import java.util.List;
 @Table( name = "users" )
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @SequenceGenerator( name = "user_seq", sequenceName = "user_sequence" )
     @Column(name = "user_id", nullable = false)
     private Long id;

@@ -9,6 +9,7 @@ public class Region {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator( name = "region_seq", sequenceName = "region_sequence" )
     @Column( name = "region_id", nullable = false)
     private Long id;
 
