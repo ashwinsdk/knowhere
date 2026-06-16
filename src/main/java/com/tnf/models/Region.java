@@ -9,7 +9,7 @@ public class Region {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column( name = "region_id")
+    @Column( name = "region_id", nullable = false)
     private Long id;
 
     @Column( name = "region_name", nullable = false, length = 100)
