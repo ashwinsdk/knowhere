@@ -2,6 +2,7 @@ package com.tnf.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,14 +29,17 @@ public class User {
     @Column( name = "phone", length = 20)
     private String phone;
 
-    @OneToMany( mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Address> addresses;
+    @OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses = new ArrayList<>();
+
+    @OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Wishlist> wishlists = new ArrayList<>();
 
     public User() {
         super();
     }
 
-    public User(Long id, String firstName, String lastName, String email, String password, String phone, List<Address> addresses) {
+    public User(Long id, String firstName, String lastName, String email, String password, String phone, List<Address> addresses, List<Wishlist> wishlists) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,6 +47,7 @@ public class User {
         this.password = password;
         this.phone = phone;
         this.addresses = addresses;
+        this.wishlists = wishlists;
     }
 
     public Long getId() {
@@ -101,6 +106,14 @@ public class User {
         this.addresses = addresses;
     }
 
+    public List<Wishlist> getWishlists() {
+        return wishlists;
+    }
+
+    public void setWishlists(List<Wishlist> wishlists) {
+        this.wishlists = wishlists;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -111,6 +124,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", addresses=" + addresses +
+                ", wishlists=" + wishlists +
                 '}';
     }
 }
