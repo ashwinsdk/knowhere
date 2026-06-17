@@ -33,13 +33,18 @@ public class User {
     private List<Address> addresses = new ArrayList<>();
 
     @OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Wishlist> wishlists = new ArrayList<>();
+    private List<Wishlist> wishlistItems = new ArrayList<>();
+
+    @OneToMany( mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Wishlist> cartItems = new ArrayList<>();
 
     public User() {
         super();
     }
 
-    public User(Long id, String firstName, String lastName, String email, String password, String phone, List<Address> addresses, List<Wishlist> wishlists) {
+    public User(Long id, String firstName, String lastName, String email, String password,
+                String phone, List<Address> addresses,
+                List<Wishlist> wishlistItems, List<Wishlist> cartItems) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,7 +52,8 @@ public class User {
         this.password = password;
         this.phone = phone;
         this.addresses = addresses;
-        this.wishlists = wishlists;
+        this.wishlistItems = wishlistItems;
+        this.cartItems = cartItems;
     }
 
     public Long getId() {
@@ -107,11 +113,19 @@ public class User {
     }
 
     public List<Wishlist> getWishlists() {
-        return wishlists;
+        return wishlistItems;
     }
 
     public void setWishlists(List<Wishlist> wishlists) {
-        this.wishlists = wishlists;
+        this.wishlistItems = wishlists;
+    }
+
+    public List<Wishlist> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<Wishlist> cartItems) {
+        this.cartItems = cartItems;
     }
 
     @Override
@@ -124,7 +138,8 @@ public class User {
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", addresses=" + addresses +
-                ", wishlists=" + wishlists +
+                ", wishlistItems=" + wishlistItems +
+                ", cartItems=" + cartItems +
                 '}';
     }
 }
