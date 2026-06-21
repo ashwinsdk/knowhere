@@ -3,6 +3,8 @@ package com.tnf.models;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "shipment")
@@ -19,15 +21,19 @@ public class Shipment {
     @Column(name = "shipment_date")
     private LocalDateTime shipmentDate;
 
+    @OneToMany(mappedBy = "shipment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Delivery> deliveries = new ArrayList<>();
+
     public Shipment() {
         super();
     }
 
-    public Shipment(Long id, String location, LocalDateTime shipmentDate) {
+    public Shipment(Long id, String location, LocalDateTime shipmentDate, List<Delivery> deliveries) {
         super();
         this.id = id;
         this.location = location;
         this.shipmentDate = shipmentDate;
+        this.deliveries = deliveries;
     }
 
     public Long getId() {
@@ -54,12 +60,21 @@ public class Shipment {
         this.shipmentDate = shipmentDate;
     }
 
+    public List<Delivery> getDeliveries() {
+        return deliveries;
+    }
+
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
+    }
+
     @Override
     public String toString() {
         return "Shipment{" +
                 "id=" + id +
                 ", location='" + location + '\'' +
                 ", shipmentDate=" + shipmentDate +
+                ", deliveries=" + deliveries +
                 '}';
     }
 }

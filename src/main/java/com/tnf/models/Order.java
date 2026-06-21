@@ -33,12 +33,15 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Delivery> deliveries = new ArrayList<>();
+
     public Order() {
         super();
     }
 
     public Order(Long id, User user, Address address, BigDecimal totalAmount, LocalDateTime purchaseDate,
-                 List<OrderItem> orderItems) {
+                 List<OrderItem> orderItems, List<Delivery> deliveries) {
         super();
         this.id = id;
         this.user = user;
@@ -46,6 +49,7 @@ public class Order {
         this.totalAmount = totalAmount;
         this.purchaseDate = purchaseDate;
         this.orderItems = orderItems;
+        this.deliveries = deliveries;
     }
 
     public Long getId() {
@@ -96,6 +100,14 @@ public class Order {
         this.orderItems = orderItems;
     }
 
+    public List<Delivery> getDeliveries() {
+        return deliveries;
+    }
+
+    public void setDeliveries(List<Delivery> deliveries) {
+        this.deliveries = deliveries;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -105,6 +117,7 @@ public class Order {
                 ", totalAmount=" + totalAmount +
                 ", purchaseDate=" + purchaseDate +
                 ", orderItems=" + orderItems +
+                ", deliveries=" + deliveries +
                 '}';
     }
 }

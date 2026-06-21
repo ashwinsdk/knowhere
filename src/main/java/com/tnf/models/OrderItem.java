@@ -3,6 +3,8 @@ package com.tnf.models;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "order_item")
@@ -27,17 +29,22 @@ public class OrderItem {
     @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal unitPrice;
 
+    @OneToMany(mappedBy = "orderItem", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReturnRequest> returnRequests = new ArrayList<>();
+
     public OrderItem() {
         super();
     }
 
-    public OrderItem(Long id, Order order, ProductType productType, Integer quantity, BigDecimal unitPrice) {
+    public OrderItem(Long id, Order order, ProductType productType, Integer quantity, BigDecimal unitPrice,
+                     List<ReturnRequest> returnRequests) {
         super();
         this.id = id;
         this.order = order;
         this.productType = productType;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
+        this.returnRequests = returnRequests;
     }
 
     public Long getId() {
@@ -80,6 +87,14 @@ public class OrderItem {
         this.unitPrice = unitPrice;
     }
 
+    public List<ReturnRequest> getReturnRequests() {
+        return returnRequests;
+    }
+
+    public void setReturnRequests(List<ReturnRequest> returnRequests) {
+        this.returnRequests = returnRequests;
+    }
+
     @Override
     public String toString() {
         return "OrderItem{" +
@@ -88,6 +103,7 @@ public class OrderItem {
                 ", productType=" + productType +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
+                ", returnRequests=" + returnRequests +
                 '}';
     }
 }
