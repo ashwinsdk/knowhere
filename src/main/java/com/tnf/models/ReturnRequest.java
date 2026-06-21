@@ -81,7 +81,7 @@ public class ReturnRequest {
     public String toString() {
         return "ReturnRequest{" +
                 "id=" + id +
-                ", orderItem=" + orderItem +
+                ", orderItemId=" + (orderItem != null ? orderItem.getId() : null) +
                 ", returnType='" + returnType + '\'' +
                 ", reason='" + reason + '\'' +
                 ", status='" + status + '\'' +

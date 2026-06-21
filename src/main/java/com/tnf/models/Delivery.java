@@ -97,8 +97,8 @@ public class Delivery {
     public String toString() {
         return "Delivery{" +
                 "id=" + id +
-                ", order=" + order +
-                ", shipment=" + shipment +
+                ", orderId=" + (order != null ? order.getId() : null) +
+                ", shipmentId=" + (shipment != null ? shipment.getId() : null) +
                 ", status='" + status + '\'' +
                 ", expectedDate=" + expectedDate +
                 ", deliveryDate=" + deliveryDate +

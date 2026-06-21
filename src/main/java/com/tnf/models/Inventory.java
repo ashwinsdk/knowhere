@@ -84,7 +84,7 @@ public class Inventory {
     public String toString() {
         return "Inventory{" +
                 "id=" + id +
-                ", productType=" + productType +
+                ", productTypeId=" + (productType != null ? productType.getId() : null) +
                 ", availableQuantity=" + availableQuantity +
                 ", reservedQuantity=" + reservedQuantity +
                 ", updatedAt=" + updatedAt +

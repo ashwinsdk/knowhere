@@ -103,7 +103,8 @@ public class Offer {
     @Override
     public String toString() {
         return "Offer [id=" + id + ", offerPrice=" + offerPrice + ", minimumPurchaseAmount=" + minimumPurchaseAmount
-                + ", title=" + title + ", description=" + description + ", product=" + product + "]";
+                + ", title=" + title + ", description=" + description
+                + ", productId=" + (product != null ? product.getId() : null) + "]";
     }   
 
     

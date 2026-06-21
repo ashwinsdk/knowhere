@@ -57,7 +57,7 @@ public class Catalog {
     public String toString() {
         return "Catalog{" +
                 "id=" + id +
-                ", category=" + category +
+                ", categoryId=" + (category != null ? category.getId() : null) +
                 ", name='" + name + '\'' +
                 '}';
     }

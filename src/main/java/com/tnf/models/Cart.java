@@ -74,8 +74,8 @@ public class Cart {
         return "Cart{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", user=" + user +
-                ", type=" + type +
+                ", userId=" + (user != null ? user.getId() : null) +
+                ", typeId=" + (type != null ? type.getId() : null) +
                 '}';
     }
 }

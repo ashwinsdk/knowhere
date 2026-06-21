@@ -129,6 +129,7 @@ public class ProductType {
     public String toString() {
         return "ProductType{" +
                 "id=" + id +
+                ", productId=" + (product != null ? product.getId() : null) +
                 ", sku='" + sku + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +

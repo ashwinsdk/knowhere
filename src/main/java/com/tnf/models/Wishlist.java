@@ -58,8 +58,8 @@ public class Wishlist {
     public String toString() {
         return "Wishlist{" +
                 "id=" + id +
-                ", user=" + user +
-                ", type=" + type +
+                ", userId=" + (user != null ? user.getId() : null) +
+                ", typeId=" + (type != null ? type.getId() : null) +
                 '}';
     }
 }

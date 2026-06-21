@@ -74,7 +74,6 @@ public class Shipment {
                 "id=" + id +
                 ", location='" + location + '\'' +
                 ", shipmentDate=" + shipmentDate +
-                ", deliveries=" + deliveries +
                 '}';
     }
 }
