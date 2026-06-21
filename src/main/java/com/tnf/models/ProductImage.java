@@ -52,7 +52,8 @@ public class ProductImage {
 
     @Override
     public String toString() {
-        return "ProductImage [id=" + id + ", productType=" + productType + ", image=" + image + "]";
+        return "ProductImage [id=" + id + ", productTypeId=" + (productType != null ? productType.getId() : null)
+                + ", imageId=" + (image != null ? image.getId() : null) + "]";
     }
 
     public ProductImage() {

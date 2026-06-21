@@ -112,12 +112,10 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", user=" + user +
-                ", address=" + address +
+                ", userId=" + (user != null ? user.getId() : null) +
+                ", addressId=" + (address != null ? address.getId() : null) +
                 ", totalAmount=" + totalAmount +
                 ", purchaseDate=" + purchaseDate +
-                ", orderItems=" + orderItems +
-                ", deliveries=" + deliveries +
                 '}';
     }
 }

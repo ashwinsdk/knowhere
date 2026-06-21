@@ -177,7 +177,7 @@ public class Address {
                 ", pincodeValue='" + pincodeValue + '\'' +
                 ", instructionsValue='" + instructionsValue + '\'' +
                 ", isDefault=" + isDefault +
-                ", user=" + user +
+                ", userId=" + (user != null ? user.getId() : null) +
                 '}';
     }
 }

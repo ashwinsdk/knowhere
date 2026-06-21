@@ -99,11 +99,10 @@ public class OrderItem {
     public String toString() {
         return "OrderItem{" +
                 "id=" + id +
-                ", order=" + order +
-                ", productType=" + productType +
+                ", orderId=" + (order != null ? order.getId() : null) +
+                ", productTypeId=" + (productType != null ? productType.getId() : null) +
                 ", quantity=" + quantity +
                 ", unitPrice=" + unitPrice +
-                ", returnRequests=" + returnRequests +
                 '}';
     }
 }

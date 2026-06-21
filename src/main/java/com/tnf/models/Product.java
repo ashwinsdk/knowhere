@@ -99,11 +99,10 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", brand=" + brand +
-                ", subcategory=" + subcategory +
+                ", brandId=" + (brand != null ? brand.getId() : null) +
+                ", subcategoryId=" + (subcategory != null ? subcategory.getId() : null) +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", productTypes=" + productTypes +
                 '}';
     }
 }
