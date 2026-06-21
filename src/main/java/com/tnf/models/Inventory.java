@@ -13,8 +13,9 @@ public class Inventory {
     @Column(name = "inventory_id", nullable = false)
     private Long id;
 
-    @Column(name = "type_id", nullable = false)
-    private Long typeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id", nullable = false)
+    private ProductType productType;
 
     @Column(name = "available_quantity")
     private Integer availableQuantity;
@@ -29,11 +30,11 @@ public class Inventory {
         super();
     }
 
-    public Inventory(Long id, Long typeId, Integer availableQuantity, Integer reservedQuantity,
+    public Inventory(Long id, ProductType productType, Integer availableQuantity, Integer reservedQuantity,
                      LocalDateTime updatedAt) {
         super();
         this.id = id;
-        this.typeId = typeId;
+        this.productType = productType;
         this.availableQuantity = availableQuantity;
         this.reservedQuantity = reservedQuantity;
         this.updatedAt = updatedAt;
@@ -47,12 +48,12 @@ public class Inventory {
         this.id = id;
     }
 
-    public Long getTypeId() {
-        return typeId;
+    public ProductType getProductType() {
+        return productType;
     }
 
-    public void setTypeId(Long typeId) {
-        this.typeId = typeId;
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
     }
 
     public Integer getAvailableQuantity() {
@@ -83,7 +84,7 @@ public class Inventory {
     public String toString() {
         return "Inventory{" +
                 "id=" + id +
-                ", typeId=" + typeId +
+                ", productType=" + productType +
                 ", availableQuantity=" + availableQuantity +
                 ", reservedQuantity=" + reservedQuantity +
                 ", updatedAt=" + updatedAt +

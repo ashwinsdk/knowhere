@@ -15,11 +15,13 @@ public class Product {
     @Column(name = "product_id", nullable = false)
     private Long id;
 
-    @Column(name = "brand_id", nullable = false)
-    private Long brandId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id", nullable = false)
+    private Brand brand;
 
-    @Column(name = "subcategory_id", nullable = false)
-    private Long subcategoryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subcategory_id", nullable = false)
+    private Subcategory subcategory;
 
     @Column(name = "product_name", nullable = false, length = 255)
     private String name;
@@ -34,12 +36,12 @@ public class Product {
         super();
     }
 
-    public Product(Long id, Long brandId, Long subcategoryId, String name, String description,
+    public Product(Long id, Brand brand, Subcategory subcategory, String name, String description,
                    List<ProductType> productTypes) {
         super();
         this.id = id;
-        this.brandId = brandId;
-        this.subcategoryId = subcategoryId;
+        this.brand = brand;
+        this.subcategory = subcategory;
         this.name = name;
         this.description = description;
         this.productTypes = productTypes;
@@ -53,20 +55,20 @@ public class Product {
         this.id = id;
     }
 
-    public Long getBrandId() {
-        return brandId;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
-    public Long getSubcategoryId() {
-        return subcategoryId;
+    public Subcategory getSubcategory() {
+        return subcategory;
     }
 
-    public void setSubcategoryId(Long subcategoryId) {
-        this.subcategoryId = subcategoryId;
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 
     public String getName() {
@@ -97,8 +99,8 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", brandId=" + brandId +
-                ", subcategoryId=" + subcategoryId +
+                ", brand=" + brand +
+                ", subcategory=" + subcategory +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", productTypes=" + productTypes +

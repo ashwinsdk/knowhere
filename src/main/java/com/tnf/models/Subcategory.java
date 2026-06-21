@@ -11,8 +11,9 @@ public class Subcategory {
     @Column(name = "subcategory_id", nullable = false)
     private Long id;
 
-    @Column(name = "catalog_id", nullable = false)
-    private Long catalogId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "catalog_id", nullable = false)
+    private Catalog catalog;
 
     @Column(name = "subcategory_name", nullable = false, length = 100)
     private String name;
@@ -21,10 +22,10 @@ public class Subcategory {
         super();
     }
 
-    public Subcategory(Long id, Long catalogId, String name) {
+    public Subcategory(Long id, Catalog catalog, String name) {
         super();
         this.id = id;
-        this.catalogId = catalogId;
+        this.catalog = catalog;
         this.name = name;
     }
 
@@ -36,12 +37,12 @@ public class Subcategory {
         this.id = id;
     }
 
-    public Long getCatalogId() {
-        return catalogId;
+    public Catalog getCatalog() {
+        return catalog;
     }
 
-    public void setCatalogId(Long catalogId) {
-        this.catalogId = catalogId;
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
     }
 
     public String getName() {
@@ -56,7 +57,7 @@ public class Subcategory {
     public String toString() {
         return "Subcategory{" +
                 "id=" + id +
-                ", catalogId=" + catalogId +
+                ", catalog=" + catalog +
                 ", name='" + name + '\'' +
                 '}';
     }
